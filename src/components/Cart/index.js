@@ -1,8 +1,8 @@
-import Header from '../Header'
-import CartListView from '../CartListView'
-
 import CartContext from '../../context/CartContext'
+
+import Header from '../Header'
 import EmptyCartView from '../EmptyCartView'
+import CartListView from '../CartListView'
 import CartSummary from '../CartSummary'
 
 import './index.css'
@@ -12,9 +12,7 @@ const Cart = () => (
     {value => {
       const {cartList, removeAllCartItems} = value
       const showEmptyView = cartList.length === 0
-      // TODO: Update the functionality to remove all the items in the cart
-
-      const onRemoveCartItem = () => {
+      const onClickRemoveAllBtn = () => {
         removeAllCartItems()
       }
 
@@ -29,8 +27,8 @@ const Cart = () => (
                 <h1 className="cart-heading">My Cart</h1>
                 <button
                   type="button"
-                  className="remove-all-button"
-                  onClick={onRemoveCartItem}
+                  className="remove-all-btn"
+                  onClick={onClickRemoveAllBtn}
                 >
                   Remove All
                 </button>
@@ -44,4 +42,5 @@ const Cart = () => (
     }}
   </CartContext.Consumer>
 )
+
 export default Cart

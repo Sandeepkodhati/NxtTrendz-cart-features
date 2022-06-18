@@ -1,5 +1,6 @@
-import './index.css'
 import CartContext from '../../context/CartContext'
+
+import './index.css'
 
 const CartSummary = () => (
   <CartContext.Consumer>
@@ -7,24 +8,25 @@ const CartSummary = () => (
       const {cartList} = value
       let total = 0
       cartList.forEach(eachCartItem => {
-        total += eachCartItem.quantity * eachCartItem.price
+        total += eachCartItem.price * eachCartItem.quantity
       })
 
       return (
-        <div className="cart-summary-container">
-          <h1 className="total-heading">
-            <span className="span-element">Order Total: </span>Rs
-            {total}/-
-          </h1>
-          <p className="cart-items-length">{cartList.length} items in cart</p>
-          <button type="button" className="checkout-button sm-none">
+        <>
+          <div className="cart-summary-container">
+            <h1 className="order-total-value">
+              <span className="order-total-label">Order Total:</span> Rs {total}
+              /-
+            </h1>
+            <p className="total-items">{cartList.length} Items in cart</p>
+            <button type="button" className="checkout-button d-sm-none">
+              Checkout
+            </button>
+          </div>
+          <button type="button" className="checkout-button d-lg-none">
             Checkout
           </button>
-
-          <button type="button" className="checkout-button lg-none">
-            Checkout
-          </button>
-        </div>
+        </>
       )
     }}
   </CartContext.Consumer>
